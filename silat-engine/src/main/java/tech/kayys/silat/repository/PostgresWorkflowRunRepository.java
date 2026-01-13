@@ -35,7 +35,7 @@ import tech.kayys.silat.model.WorkflowRunId;
 import tech.kayys.silat.model.WorkflowRunSnapshot;
 
 @ApplicationScoped
-public class PostgresWorkflowRunRepository implements WorkflowRunRepository,
+public class PostgresWorkflowRunRepository implements tech.kayys.silat.api.repository.WorkflowRunRepository,
                 PanacheRepositoryBase<WorkflowRunEntity, String> {
 
         private static final Logger LOG = LoggerFactory.getLogger(PostgresWorkflowRunRepository.class);

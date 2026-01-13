@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
+import tech.kayys.silat.engine.impl.InMemoryExecutionHistoryRepository;
 import tech.kayys.silat.execution.ExecutionHistory;
 import tech.kayys.silat.model.NodeId;
 import tech.kayys.silat.model.WorkflowRunId;

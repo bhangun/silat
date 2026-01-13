@@ -6,7 +6,7 @@ import tech.kayys.silat.model.CallbackRegistration;
 import tech.kayys.silat.model.NodeId;
 import tech.kayys.silat.model.WorkflowRunId;
 
-interface CallbackService {
+public interface CallbackService {
 
     Uni<CallbackRegistration> register(
             WorkflowRunId runId,

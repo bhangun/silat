@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import io.smallrye.mutiny.Uni;
+import tech.kayys.silat.engine.impl.DefaultCallbackService;
 import tech.kayys.silat.model.CallbackConfig;
 import tech.kayys.silat.model.CallbackRegistration;
 import tech.kayys.silat.model.NodeId;

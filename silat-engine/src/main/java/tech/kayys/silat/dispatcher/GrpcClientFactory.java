@@ -15,7 +15,8 @@ public class GrpcClientFactory {
 
     public ExecutorGrpc.ExecutorStub getStub(ExecutorInfo executor) {
         return stubs.computeIfAbsent(executor.executorId(), id -> {
-            // Create gRPC channel - OpenTelemetry instrumentation will be applied automatically by Quarkus
+            // Create gRPC channel - OpenTelemetry instrumentation will be applied
+            // automatically by Quarkus
             ManagedChannel channel = ManagedChannelBuilder.forTarget(executor.endpoint())
                     .usePlaintext()
                     .build();

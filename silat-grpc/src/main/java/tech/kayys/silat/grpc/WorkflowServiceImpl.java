@@ -13,7 +13,7 @@ import jakarta.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import tech.kayys.silat.engine.WorkflowRunManager;
+import tech.kayys.silat.api.engine.WorkflowRunManager;
 import tech.kayys.silat.grpc.v1.*;
 import tech.kayys.silat.model.NodeId;
 import tech.kayys.silat.model.Signal;

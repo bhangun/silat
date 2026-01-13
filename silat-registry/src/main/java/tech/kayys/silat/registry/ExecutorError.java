@@ -49,56 +49,76 @@ public record ExecutorError(
 
     // Factory methods using constructor instead of builder
     public static ExecutorError connectionError(String executorId, String endpoint, Throwable cause) {
+        java.util.Map<String, Object> details = new java.util.HashMap<>();
+        details.put("endpoint", endpoint);
+        details.put("errorType", cause.getClass().getName());
+        details.put("errorMessage", cause.getMessage());
         return new ExecutorError(
             null, executorId, Category.CONNECTION, "EXECUTOR_CONNECTION_FAILED",
             "Failed to connect to executor at " + endpoint + ": " + cause.getMessage(),
-            null, Map.of("endpoint", endpoint, "errorType", cause.getClass().getName(), "errorMessage", cause.getMessage()),
+            null, details,
             true, "Check network connectivity and executor status"
         );
     }
 
     public static ExecutorError timeoutError(String executorId, Duration timeout, String operation) {
+        java.util.Map<String, Object> details = new java.util.HashMap<>();
+        details.put("timeoutMs", timeout.toMillis());
+        details.put("operation", operation);
         return new ExecutorError(
             null, executorId, Category.TIMEOUT, "EXECUTOR_TIMEOUT",
             "Executor timed out after " + timeout + " during " + operation,
-            null, Map.of("timeoutMs", timeout.toMillis(), "operation", operation),
+            null, details,
             true, "Increase timeout or optimize executor performance"
         );
     }
 
     public static ExecutorError resourceError(String executorId, String resource, String constraint) {
+        java.util.Map<String, Object> details = new java.util.HashMap<>();
+        details.put("resource", resource);
+        details.put("constraint", constraint);
         return new ExecutorError(
             null, executorId, Category.RESOURCE, "EXECUTOR_RESOURCE_LIMIT",
             "Executor resource limit exceeded: " + resource + " (" + constraint + ")",
-            null, Map.of("resource", resource, "constraint", constraint),
+            null, details,
             true, "Scale executor resources or reduce load"
         );
     }
 
     public static ExecutorError configurationError(String executorId, String configKey, String issue) {
+        java.util.Map<String, Object> details = new java.util.HashMap<>();
+        details.put("configKey", configKey);
+        details.put("issue", issue);
         return new ExecutorError(
             null, executorId, Category.CONFIGURATION, "EXECUTOR_CONFIG_ERROR",
             "Executor configuration error: " + configKey + " - " + issue,
-            null, Map.of("configKey", configKey, "issue", issue),
+            null, details,
             false, "Fix executor configuration and restart"
         );
     }
 
     public static ExecutorError validationError(String executorId, String validationRule, String details) {
+        java.util.Map<String, Object> dm = new java.util.HashMap<>();
+        dm.put("validationRule", validationRule);
+        dm.put("details", details);
         return new ExecutorError(
             null, executorId, Category.VALIDATION, "EXECUTOR_VALIDATION_FAILED",
             "Executor validation failed: " + validationRule,
-            null, Map.of("validationRule", validationRule, "details", details),
+            null, dm,
             false, "Fix input data or adjust validation rules"
         );
     }
 
     public static ExecutorError internalError(String executorId, String component, Throwable cause) {
+        java.util.Map<String, Object> details = new java.util.HashMap<>();
+        details.put("component", component);
+        details.put("errorType", cause.getClass().getName());
+        details.put("stackTrace", getStackTrace(cause));
         return new ExecutorError(
             null, executorId, Category.INTERNAL, "EXECUTOR_INTERNAL_ERROR",
             "Executor internal error in " + component + ": " + cause.getMessage(),
-            null, Map.of("component", component, "errorType", cause.getClass().getName(), "stackTrace", getStackTrace(cause)),
-            cause.getMessage().contains("temporary") || cause.getMessage().contains("retry"),
+            null, details,
+            cause.getMessage() != null && (cause.getMessage().contains("temporary") || cause.getMessage().contains("retry")),
             "Check executor logs and restart if necessary"
         );
     }

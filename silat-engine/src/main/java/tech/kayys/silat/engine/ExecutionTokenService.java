@@ -6,7 +6,7 @@ import tech.kayys.silat.model.ExecutionToken;
 import tech.kayys.silat.model.NodeId;
 import tech.kayys.silat.model.WorkflowRunId;
 
-interface ExecutionTokenService {
+public interface ExecutionTokenService {
 
     Uni<ExecutionToken> issue(WorkflowRunId runId, NodeId nodeId, int attempt);
 

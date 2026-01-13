@@ -1,0 +1,517 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for tech.kayys.silat:silat-engine:jar:1.0.0-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 174, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Silat Workflow Engine                                              [pom]
+[INFO] silat-common                                                       [jar]
+[INFO] silat-api                                                          [jar]
+[INFO] silat-registry                                                     [jar]
+[INFO] silat-grpc                                                         [jar]
+[INFO] silat-kafka                                                        [jar]
+[INFO] silat-engine                                                       [jar]
+[INFO] silat-runtime                                                      [jar]
+[INFO] 
+[INFO] -------------------< tech.kayys.silat:silat-parent >--------------------
+[INFO] Building Silat Workflow Engine 1.0.0-SNAPSHOT                      [1/8]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ silat-parent ---
+[INFO] 
+[INFO] -------------------< tech.kayys.silat:silat-common >--------------------
+[INFO] Building silat-common 1.0.0-SNAPSHOT                               [2/8]
+[INFO]   from silat-common/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ silat-common ---
+[INFO] Deleting /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-common/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ silat-common ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ silat-common ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 68 source files with javac [debug release 21] to target/classes
+[INFO] 
+[INFO] ---------------------< tech.kayys.silat:silat-api >---------------------
+[INFO] Building silat-api 1.0.0-SNAPSHOT                                  [3/8]
+[INFO]   from silat-api/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ silat-api ---
+[INFO] Deleting /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-api/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ silat-api ---
+[INFO] skip non existing resourceDirectory /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-api/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ silat-api ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 33 source files with javac [debug release 21] to target/classes
+[INFO] 
+[INFO] ------------------< tech.kayys.silat:silat-registry >-------------------
+[INFO] Building silat-registry 1.0.0-SNAPSHOT                             [4/8]
+[INFO]   from silat-registry/pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ silat-registry ---
+[INFO] Deleting /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ silat-registry ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ silat-registry ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug release 21] to target/classes
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[10,34] package tech.kayys.silat.api.event does not exist
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[17,40] interface expected here
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[17,8] cyclic inheritance involving tech.kayys.silat.registry.EventPublisher
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[19,33] modifier private,static not allowed here
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[20,33] modifier private,static not allowed here
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[19,17] cannot find symbol
+  symbol:   class Object
+  location: class tech.kayys.silat.registry.ExecutorError
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[35,50] cannot find symbol
+  symbol:   class Object
+  location: class tech.kayys.silat.registry.ExecutorError
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[21,12] java.lang.Object is not public in java.lang; cannot be accessed from outside package
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[16,1] annotation interface not applicable to this kind of declaration
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[45,67] no suitable method found for of(no arguments)
+    method java.util.Map.<K,V>of() is not applicable
+      (inference variable K has incompatible upper bounds java.lang.Object)
+    method java.util.Map.<K,V>of(K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[55,66] cannot find symbol
+  symbol:   method getClass()
+  location: variable cause of type java.lang.Throwable
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[64,22] no suitable method found for of(java.lang.String,long,java.lang.String,java.lang.String)
+    method java.util.Map.<K,V>of() is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+      (inference variable K has incompatible upper bounds java.lang.Object)
+    method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[73,22] no suitable method found for of(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+    method java.util.Map.<K,V>of() is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+      (inference variable K has incompatible upper bounds java.lang.Object)
+    method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[82,22] no suitable method found for of(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+    method java.util.Map.<K,V>of() is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+      (inference variable K has incompatible upper bounds java.lang.Object)
+    method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[91,22] no suitable method found for of(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+    method java.util.Map.<K,V>of() is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+      (inference variable K has incompatible upper bounds java.lang.Object)
+    method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+    method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+      (cannot infer type-variable(s) K,V
+        (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[100,68] cannot find symbol
+  symbol:   method getClass()
+  location: variable cause of type java.lang.Throwable
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistry.java:[25,57] cannot infer type arguments for java.util.concurrent.ConcurrentHashMap<>
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistry.java:[30,49] cannot infer type arguments for java.util.ArrayList<>
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistry.java:[33,36] no suitable method found for failure(java.lang.IllegalStateException)
+    method io.smallrye.mutiny.groups.UniCreate.<T>failure(java.lang.Throwable) is not applicable
+      (inference variable T has incompatible upper bounds java.lang.Object)
+    method io.smallrye.mutiny.groups.UniCreate.<T>failure(java.util.function.Supplier<java.lang.Throwable>) is not applicable
+      (cannot infer type-variable(s) T
+        (argument mismatch; java.lang.IllegalStateException cannot be converted to java.util.function.Supplier<java.lang.Throwable>))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistry.java:[38,32] no suitable method found for item(tech.kayys.silat.model.ExecutorInfo)
+    method io.smallrye.mutiny.groups.UniCreate.<T>item(java.util.function.Supplier<? extends T>) is not applicable
+      (cannot infer type-variable(s) T
+        (argument mismatch; tech.kayys.silat.model.ExecutorInfo cannot be converted to java.util.function.Supplier<? extends T>))
+    method io.smallrye.mutiny.groups.UniCreate.<T,S>item(java.util.function.Supplier<S>,java.util.function.Function<S,? extends T>) is not applicable
+      (cannot infer type-variable(s) T,S
+        (actual and formal argument lists differ in length))
+    method io.smallrye.mutiny.groups.UniCreate.<T>item(T) is not applicable
+      (inference variable T has incompatible upper bounds java.lang.Object)
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistryComplete.java:[26,64] cannot infer type arguments for java.util.concurrent.ConcurrentHashMap<>
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistryComplete.java:[48,17] method map in interface java.util.stream.Stream<T> cannot be applied to given types;
+  required: java.util.function.Function<? super java.util.Map.Entry<java.lang.String,tech.kayys.silat.model.ExecutorHealthInfo>,? extends R>
+  found:    (entry)->g[...]ey())
+  reason: inference variable R has incompatible upper bounds java.lang.Object
+[INFO] 22 errors 
+[INFO] -------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Silat Workflow Engine 1.0.0-SNAPSHOT:
+[INFO] 
+[INFO] Silat Workflow Engine .............................. SUCCESS [  0.031 s]
+[INFO] silat-common ....................................... SUCCESS [  0.623 s]
+[INFO] silat-api .......................................... SUCCESS [  0.305 s]
+[INFO] silat-registry ..................................... FAILURE [  0.190 s]
+[INFO] silat-grpc ......................................... SKIPPED
+[INFO] silat-kafka ........................................ SKIPPED
+[INFO] silat-engine ....................................... SKIPPED
+[INFO] silat-runtime ...................................... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  1.632 s
+[INFO] Finished at: 2026-01-13T16:05:18+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project silat-registry: Compilation failure: Compilation failure: 
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[10,34] package tech.kayys.silat.api.event does not exist
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[17,40] interface expected here
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[17,8] cyclic inheritance involving tech.kayys.silat.registry.EventPublisher
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[19,33] modifier private,static not allowed here
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[20,33] modifier private,static not allowed here
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[19,17] cannot find symbol
+[ERROR]   symbol:   class Object
+[ERROR]   location: class tech.kayys.silat.registry.ExecutorError
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[35,50] cannot find symbol
+[ERROR]   symbol:   class Object
+[ERROR]   location: class tech.kayys.silat.registry.ExecutorError
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[21,12] java.lang.Object is not public in java.lang; cannot be accessed from outside package
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/EventPublisher.java:[16,1] annotation interface not applicable to this kind of declaration
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[45,67] no suitable method found for of(no arguments)
+[ERROR]     method java.util.Map.<K,V>of() is not applicable
+[ERROR]       (inference variable K has incompatible upper bounds java.lang.Object)
+[ERROR]     method java.util.Map.<K,V>of(K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[55,66] cannot find symbol
+[ERROR]   symbol:   method getClass()
+[ERROR]   location: variable cause of type java.lang.Throwable
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[64,22] no suitable method found for of(java.lang.String,long,java.lang.String,java.lang.String)
+[ERROR]     method java.util.Map.<K,V>of() is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+[ERROR]       (inference variable K has incompatible upper bounds java.lang.Object)
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[73,22] no suitable method found for of(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+[ERROR]     method java.util.Map.<K,V>of() is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+[ERROR]       (inference variable K has incompatible upper bounds java.lang.Object)
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[82,22] no suitable method found for of(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+[ERROR]     method java.util.Map.<K,V>of() is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+[ERROR]       (inference variable K has incompatible upper bounds java.lang.Object)
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[91,22] no suitable method found for of(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+[ERROR]     method java.util.Map.<K,V>of() is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V) is not applicable
+[ERROR]       (inference variable K has incompatible upper bounds java.lang.Object)
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method java.util.Map.<K,V>of(K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V,K,V) is not applicable
+[ERROR]       (cannot infer type-variable(s) K,V
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorError.java:[100,68] cannot find symbol
+[ERROR]   symbol:   method getClass()
+[ERROR]   location: variable cause of type java.lang.Throwable
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistry.java:[25,57] cannot infer type arguments for java.util.concurrent.ConcurrentHashMap<>
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistry.java:[30,49] cannot infer type arguments for java.util.ArrayList<>
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistry.java:[33,36] no suitable method found for failure(java.lang.IllegalStateException)
+[ERROR]     method io.smallrye.mutiny.groups.UniCreate.<T>failure(java.lang.Throwable) is not applicable
+[ERROR]       (inference variable T has incompatible upper bounds java.lang.Object)
+[ERROR]     method io.smallrye.mutiny.groups.UniCreate.<T>failure(java.util.function.Supplier<java.lang.Throwable>) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (argument mismatch; java.lang.IllegalStateException cannot be converted to java.util.function.Supplier<java.lang.Throwable>))
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistry.java:[38,32] no suitable method found for item(tech.kayys.silat.model.ExecutorInfo)
+[ERROR]     method io.smallrye.mutiny.groups.UniCreate.<T>item(java.util.function.Supplier<? extends T>) is not applicable
+[ERROR]       (cannot infer type-variable(s) T
+[ERROR]         (argument mismatch; tech.kayys.silat.model.ExecutorInfo cannot be converted to java.util.function.Supplier<? extends T>))
+[ERROR]     method io.smallrye.mutiny.groups.UniCreate.<T,S>item(java.util.function.Supplier<S>,java.util.function.Function<S,? extends T>) is not applicable
+[ERROR]       (cannot infer type-variable(s) T,S
+[ERROR]         (actual and formal argument lists differ in length))
+[ERROR]     method io.smallrye.mutiny.groups.UniCreate.<T>item(T) is not applicable
+[ERROR]       (inference variable T has incompatible upper bounds java.lang.Object)
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistryComplete.java:[26,64] cannot infer type arguments for java.util.concurrent.ConcurrentHashMap<>
+[ERROR] /Users/bhangun/Workspace/workkayys/Products/Wayang/wayang-platform/wayang-workflow/silat-registry/src/main/java/tech/kayys/silat/registry/ExecutorRegistryComplete.java:[48,17] method map in interface java.util.stream.Stream<T> cannot be applied to given types;
+[ERROR]   required: java.util.function.Function<? super java.util.Map.Entry<java.lang.String,tech.kayys.silat.model.ExecutorHealthInfo>,? extends R>
+[ERROR]   found:    (entry)->g[...]ey())
+[ERROR]   reason: inference variable R has incompatible upper bounds java.lang.Object
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :silat-registry

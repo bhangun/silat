@@ -18,7 +18,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import tech.kayys.silat.dispatcher.TaskDispatcher;
 import tech.kayys.silat.execution.NodeExecutionTask;
-import tech.kayys.silat.registry.EventPublisher;
+import tech.kayys.silat.api.event.EventPublisher;
 import tech.kayys.silat.registry.ExecutorRegistry;
 import tech.kayys.silat.model.NodeId;
 import tech.kayys.silat.model.RetryPolicy;

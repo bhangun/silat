@@ -7,7 +7,7 @@ import tech.kayys.silat.execution.ExecutionHistory;
 import tech.kayys.silat.model.NodeId;
 import tech.kayys.silat.model.WorkflowRunId;
 
-interface ExecutionHistoryRepository {
+public interface ExecutionHistoryRepository {
 
     Uni<Void> append(WorkflowRunId runId, String type, String message, Map<String, Object> metadata);
 

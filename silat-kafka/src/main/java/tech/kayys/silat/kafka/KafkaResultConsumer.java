@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import io.smallrye.reactive.messaging.annotations.Blocking;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import tech.kayys.silat.engine.WorkflowRunManager;
+import tech.kayys.silat.api.engine.WorkflowRunManager;
 import tech.kayys.silat.execution.NodeExecutionResult;
 import tech.kayys.silat.execution.DefaultNodeExecutionResult;
 import tech.kayys.silat.execution.NodeExecutionStatus;

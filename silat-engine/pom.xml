@@ -11,29 +11,14 @@
     <artifactId>silat-engine</artifactId>
 
     <properties>
-        <compiler-plugin.version>3.14.1</compiler-plugin.version>
-        <maven.compiler.release>21</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
-        <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
-        <quarkus.platform.version>3.15.1</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
-        <lombok.version>1.18.30</lombok.version>
         <protobuf.version>3.25.5</protobuf.version>
         <quarkus.grpc.protoc-artifact>com.google.protobuf:protoc:${protobuf.version}</quarkus.grpc.protoc-artifact>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>${quarkus.platform.group-id}</groupId>
-                <artifactId>${quarkus.platform.artifact-id}</artifactId>
-                <version>${quarkus.platform.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -45,17 +30,17 @@
         </dependency>
         <dependency>
             <groupId>tech.kayys.silat</groupId>
+            <artifactId>silat-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>tech.kayys.silat</groupId>
             <artifactId>silat-grpc</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>tech.kayys.silat</groupId>
             <artifactId>silat-kafka</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>tech.kayys.silat</groupId>
-            <artifactId>silat-api</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -75,14 +60,6 @@
         <dependency>
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-reactive-pg-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-rest</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>io.quarkus</groupId>
-            <artifactId>quarkus-rest-jackson</artifactId>
         </dependency>
         <dependency>
             <groupId>io.quarkus</groupId>
@@ -252,4 +229,5 @@
             </properties>
         </profile>
     </profiles>
+
 </project>

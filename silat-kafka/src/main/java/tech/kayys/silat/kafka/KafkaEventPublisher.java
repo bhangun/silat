@@ -1,8 +1,12 @@
 package tech.kayys.silat.kafka;
 
 import io.smallrye.mutiny.Uni;
+import jakarta.annotation.Priority;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import tech.kayys.silat.api.event.EventPublisher;
+
+import static jakarta.interceptor.Interceptor.Priority.APPLICATION;
 import tech.kayys.silat.model.event.ExecutionEvent;
 import tech.kayys.silat.model.event.NodeCompletedEvent;
 import tech.kayys.silat.model.event.NodeFailedEvent;
@@ -20,13 +24,13 @@ import org.slf4j.LoggerFactory;
  * ============================================================================
  * KAFKA INTEGRATION
  * ============================================================================
- * 
+ *
  * Kafka-based event streaming for:
  * - Domain event publishing
  * - Task distribution to executors
  * - Result collection from executors
  * - Workflow status updates
- * 
+ *
  * Topics:
  * - workflow.events       - Domain events (event sourcing)
  * - workflow.tasks        - Task assignments for executors
@@ -40,7 +44,7 @@ import org.slf4j.LoggerFactory;
  * Publishes domain events to Kafka
  */
 @ApplicationScoped
-public class KafkaEventPublisher {
+public class KafkaEventPublisher implements EventPublisher {
 
     private static final Logger LOG = LoggerFactory.getLogger(KafkaEventPublisher.class);
 
@@ -48,10 +52,8 @@ public class KafkaEventPublisher {
     @Channel("workflow-events")
     Emitter<WorkflowEventMessage> eventEmitter;
 
-    /**
-     * Publish domain events to Kafka
-     */
-    public Uni<Void> publishEvents(List<ExecutionEvent> events) {
+    @Override
+    public Uni<Void> publish(List<ExecutionEvent> events) {
         LOG.debug("Publishing {} events to Kafka", events.size());
 
         return Uni.join().all(
@@ -105,5 +107,18 @@ public class KafkaEventPublisher {
         }
 
         return data;
+    }
+
+    @Override
+    public Uni<Void> publishRetry(
+            tech.kayys.silat.model.WorkflowRunId runId,
+            tech.kayys.silat.model.NodeId nodeId) {
+        ExecutionEvent event = new tech.kayys.silat.model.event.GenericExecutionEvent(
+                runId,
+                "RetryScheduled",
+                "Node retry scheduled",
+                java.time.Instant.now(),
+                java.util.Map.of("nodeId", nodeId.value()));
+        return publish(List.of(event));
     }
 }

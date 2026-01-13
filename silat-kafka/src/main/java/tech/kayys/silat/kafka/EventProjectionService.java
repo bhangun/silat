@@ -1,6 +1,6 @@
 package tech.kayys.silat.kafka;
 
-import tech.kayys.silat.repository.WorkflowRunRepository;
+import tech.kayys.silat.api.repository.WorkflowRunRepository;
 
 import io.smallrye.mutiny.Uni;
 import jakarta.enterprise.context.ApplicationScoped;
