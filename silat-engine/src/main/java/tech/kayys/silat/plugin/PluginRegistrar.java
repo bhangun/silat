@@ -8,7 +8,6 @@ import jakarta.enterprise.event.Observes;
 import jakarta.inject.Inject;
 
 import io.quarkus.runtime.StartupEvent;
-import tech.kayys.silat.plugin.defaultplugins.DefaultPluginBundle;
 
 /**
  * Initializes and registers default plugins when the application starts
@@ -16,54 +15,33 @@ import tech.kayys.silat.plugin.defaultplugins.DefaultPluginBundle;
 @ApplicationScoped
 public class PluginRegistrar {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PluginRegistrar.class);
+        private static final Logger LOG = LoggerFactory.getLogger(PluginRegistrar.class);
 
-    @Inject
-    PluginService pluginService;
+        @Inject
+        PluginService pluginService;
 
-    public void onStart(@Observes StartupEvent ev) {
-        LOG.info("Initializing default plugins...");
+        public void onStart(@Observes StartupEvent ev) {
+                LOG.info("Initializing plugins...");
 
-        // Set plugin directory
-        pluginService.setPluginDirectory("./plugins");
-        pluginService.setDataDirectory("./plugin-data");
+                // Set plugin directory
+                pluginService.setPluginDirectory("./plugins");
+                pluginService.setDataDirectory("./plugin-data");
 
-        try {
-            // Create and register the default plugin bundle programmatically
-            DefaultPluginBundle defaultBundle = new DefaultPluginBundle();
+                // 1. Discover and load all plugins (from classpath and directory)
+                pluginService.discoverAndLoadPlugins()
+                                .subscribe().with(
+                                                plugins -> LOG.info("Successfully discovered and loaded {} plugins",
+                                                                plugins.size()),
+                                                error -> LOG.error("Failed to discover and load plugins", error));
 
-            // Register the plugin bundle with the service
-            pluginService.registerPlugin(defaultBundle)
-                    .subscribe().with(
-                            result -> {
-                                LOG.info("Default plugin bundle registered: {}", defaultBundle.getMetadata().name());
+                try {
+                        // 2. Register programmatic plugins if needed
+                        // (bundle registration logic remains if needed for specific non-ServiceLoader
+                        // plugins)
+                } catch (Exception e) {
+                        LOG.error("Failed to initialize additional plugins", e);
+                }
 
-                                // Start the default plugin bundle
-                                pluginService.startPlugin(defaultBundle.getMetadata().id())
-                                        .subscribe().with(
-                                                startResult -> LOG.info("Default plugin bundle started successfully"),
-                                                error -> LOG.error("Failed to start default plugin bundle", error));
-                            },
-                            error -> LOG.error("Failed to register default plugin bundle", error));
-
-            // Auto-register Consul Service Discovery Plugin
-            tech.kayys.silat.plugin.consul.ConsulServiceDiscoveryPlugin consulPlugin = new tech.kayys.silat.plugin.consul.ConsulServiceDiscoveryPlugin();
-            pluginService.registerPlugin(consulPlugin)
-                    .subscribe().with(
-                            result -> {
-                                LOG.info("Consul plugin registered: {}", consulPlugin.getMetadata().name());
-                                pluginService.startPlugin(consulPlugin.getMetadata().id())
-                                        .subscribe().with(
-                                                startResult -> LOG.info("Consul plugin started successfully"),
-                                                error -> LOG.error("Failed to start Consul plugin", error));
-                            },
-                            error -> LOG.error("Failed to register Consul plugin", error));
-
-        } catch (Exception e) {
-            LOG.error("Failed to initialize default plugins", e);
+                LOG.info("Plugin initialization completed.");
         }
-
-        LOG.info("Default plugin initialization completed. Total plugins loaded: {}",
-                pluginService.getAllPlugins().size());
-    }
 }

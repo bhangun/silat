@@ -10,7 +10,8 @@ import picocli.CommandLine.Option;
     subcommands = {
         WorkflowDefinitionCommands.class,
         WorkflowRunCommands.class,
-        ExecutorCommands.class
+        ExecutorCommands.class,
+        ConfigCommands.class
     },
     mixinStandardHelpOptions = true,
     version = "1.0.0"

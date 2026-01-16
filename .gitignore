@@ -136,4 +136,5 @@ apidocs/
 
 # Silat specific (if any config/cache files)
 **/silat-config/
-**/silat-cache/    
+**/silat-cache/
+**/certs/    

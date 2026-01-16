@@ -1,74 +1,151 @@
 # silat-cli
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+Silat Workflow Engine CLI - A command-line interface for managing Silat workflow engine
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## Features
 
-## Running the application in dev mode
+- Manage workflow definitions
+- Control workflow runs
+- Register and manage executors
+- Configuration management
+- Cross-platform native executables
+- Shell auto-completion
 
-You can run your application in dev mode that enables live coding using:
+## Installation
 
-```shell script
+### Using Package Managers
+
+#### Homebrew (macOS/Linux)
+```bash
+brew tap kayys/silat
+brew install silat-cli
+```
+
+#### Scoop (Windows)
+```powershell
+scoop bucket add silat https://github.com/kayys/silat
+scoop install silat-cli
+```
+
+### Download Pre-built Binaries
+
+Download from the [GitHub releases page](https://github.com/kayys/silat/releases) for your platform:
+- Linux x64: `silat-cli-{version}-linux-x64`
+- Linux ARM64: `silat-cli-{version}-linux-arm64`
+- macOS x64: `silat-cli-{version}-macos-x64`
+- macOS ARM64: `silat-cli-{version}-macos-arm64`
+- Windows x64: `silat-cli-{version}-windows-x64.exe`
+
+### Using JBang (requires Java 21+)
+```bash
+jbang silat@kayys/silat --help
+```
+
+### Building from Source
+```bash
+git clone https://github.com/kayys/silat.git
+cd silat/silat-cli
+./mvnw package -Dquarkus.package.jar.type=uber-jar
+java -jar target/silat-cli-1.0.0-SNAPSHOT-runner.jar --help
+```
+
+## Usage
+
+### Basic Commands
+
+```bash
+# Show help
+silat --help
+
+# List workflow definitions
+silat workflow-def list
+
+# Register an executor
+silat executors register my-executor --type worker --comm-type GRPC
+
+# Configure default server address
+silat config set --property server.address --value myserver:9090
+```
+
+### Configuration Management
+
+The CLI supports persistent configuration stored in `~/.silat/config.properties`:
+
+```bash
+# Initialize configuration with defaults
+silat config init
+
+# Set configuration properties
+silat config set --property server.address --value myserver:9090
+silat config set --property output.format --value json
+
+# Get configuration properties
+silat config get --property server.address
+
+# List all configuration
+silat config list
+```
+
+### Available Commands
+
+- `workflow-def` - Manage workflow definitions
+- `workflow-run` - Manage workflow runs
+- `executors` - Manage executors
+- `config` - Manage CLI configuration
+- `--help` - Show help information
+- `--version` - Show version information
+
+## Development
+
+### Running in Development Mode
+
+```bash
 ./mvnw quarkus:dev
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+### Building Uber JAR
 
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
-./mvnw package
-```
-
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
-
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
+```bash
 ./mvnw package -Dquarkus.package.jar.type=uber-jar
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+### Building Native Executable
 
-## Creating a native executable
-
-You can create a native executable using:
-
-```shell script
+```bash
+# Requires GraalVM
 ./mvnw package -Dnative
-```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
-
-```shell script
+# Or build in container
 ./mvnw package -Dnative -Dquarkus.native.container-build=true
 ```
 
-You can then execute your native executable with: `./target/silat-cli-1.0.0-SNAPSHOT-runner`
+### Generating Shell Completion
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
-
-## Related Guides
-
-- Picocli ([guide](https://quarkus.io/guides/picocli)): Develop command line applications with Picocli
-
-## Provided Code
-
-### Picocli Example
-
-Hello and goodbye are civilization fundamentals. Let's not forget it with this example picocli application by changing the <code>command</code> and <code>parameters</code>.
-
-[Related guide section...](https://quarkus.io/guides/picocli#command-line-application-with-multiple-commands)
-
-Also for picocli applications the dev mode is supported. When running dev mode, the picocli application is executed and on press of the Enter key, is restarted.
-
-As picocli applications will often require arguments to be passed on the commandline, this is also possible in dev mode via:
-
-```shell script
-./mvnw quarkus:dev -Dquarkus.args='Quarky'
+```bash
+# Generate bash completion script
+./mvnw compile exec:java -Dexec.mainClass=tech.kayys.silat.cli.GenerateCompletion
 ```
+
+## Deployment with JReleaser
+
+This project uses JReleaser for multi-platform distribution:
+
+- GitHub Releases: Automatic upload of binaries
+- Homebrew Tap: Distribution via Homebrew
+- Scoop Bucket: Windows package management
+- JBang Catalog: Script-based execution
+- Native Images: Optimized executables for each platform
+
+### Release Process
+
+1. Update version in `pom.xml`
+2. Commit and tag the release
+3. Run JReleaser: `./mvnw jreleaser:full-release`
+
+## Contributing
+
+Contributions are welcome! Please submit pull requests or open issues on the GitHub repository.
+
+## License
+
+Apache 2.0

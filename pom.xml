@@ -38,10 +38,10 @@
         <module>silat-grpc</module>
         <module>silat-kafka</module>
         <module>silat-runtime</module>
+        <module>silat-runtime-standalone</module>
         <module>silat-plugins</module>
         <module>examples/silat-test-client</module>
         <module>examples/silat-test-executor</module>
-
     </modules>
 
     <dependencyManagement>

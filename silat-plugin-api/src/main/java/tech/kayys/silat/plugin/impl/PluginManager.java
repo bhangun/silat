@@ -257,32 +257,48 @@ public class PluginManager {
     }
 
     /**
-     * Discover and load all plugins from the plugin directory
+     * Discover and load all plugins from the plugin directory and classpath
      */
     public Uni<List<Plugin>> discoverAndLoadPlugins() {
         return Uni.createFrom().item(() -> {
-            Path pluginDir = Paths.get(pluginDirectory);
-            if (!Files.exists(pluginDir)) {
-                LOG.warn("Plugin directory does not exist: {}", pluginDirectory);
-                return List.of();
-            }
-
             List<Plugin> loadedPlugins = new ArrayList<>();
-            try (DirectoryStream<Path> stream = Files.newDirectoryStream(pluginDir, "*.jar")) {
-                for (Path jarFile : stream) {
-                    try {
-                        Plugin plugin = loadPlugin(jarFile).await().indefinitely();
+
+            // 1. Load from classpath using ServiceLoader
+            LOG.info("Discovering plugins from classpath...");
+            ServiceLoader<Plugin> loader = ServiceLoader.load(Plugin.class);
+            for (Plugin plugin : loader) {
+                try {
+                    if (!registry.isRegistered(plugin.getMetadata().id())) {
+                        LOG.info("Discovered classpath plugin: {}", plugin.getMetadata().id());
+                        registerPlugin(plugin).await().indefinitely();
                         startPlugin(plugin.getMetadata().id()).await().indefinitely();
                         loadedPlugins.add(plugin);
-                    } catch (Exception e) {
-                        LOG.error("Failed to load plugin from: {}", jarFile, e);
                     }
+                } catch (Exception e) {
+                    LOG.error("Failed to load classpath plugin: {}", plugin.getClass().getName(), e);
                 }
-            } catch (IOException e) {
-                LOG.error("Failed to scan plugin directory", e);
             }
 
-            LOG.info("Discovered and loaded {} plugins", loadedPlugins.size());
+            // 2. Load from plugin directory
+            Path pluginDir = Paths.get(pluginDirectory);
+            if (Files.exists(pluginDir)) {
+                LOG.info("Scanning plugin directory: {}", pluginDirectory);
+                try (DirectoryStream<Path> stream = Files.newDirectoryStream(pluginDir, "*.jar")) {
+                    for (Path jarFile : stream) {
+                        try {
+                            Plugin plugin = loadPlugin(jarFile).await().indefinitely();
+                            startPlugin(plugin.getMetadata().id()).await().indefinitely();
+                            loadedPlugins.add(plugin);
+                        } catch (Exception e) {
+                            LOG.error("Failed to load plugin from: {}", jarFile, e);
+                        }
+                    }
+                } catch (IOException e) {
+                    LOG.error("Failed to scan plugin directory", e);
+                }
+            }
+
+            LOG.info("Total plugins discovered and loaded: {}", loadedPlugins.size());
             return loadedPlugins;
         });
     }
@@ -300,7 +316,6 @@ public class PluginManager {
     public void setDataDirectory(String dataDirectory) {
         this.dataDirectory = dataDirectory;
     }
-
 
     /**
      * Get the plugin registry (for internal use)

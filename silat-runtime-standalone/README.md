@@ -1,62 +1,237 @@
-# silat-runtime
+# Silat Standalone Runtime
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+A self-contained workflow engine runtime that includes everything needed to run workflows without external dependencies.
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## Features
 
-## Running the application in dev mode
+- Complete workflow engine with scheduler and dispatcher
+- Built-in local executors
+- Embedded database (H2)
+- Embedded gRPC server for executor communication
+- REST API for workflow management
+- Metrics and health checks
+- Zero-configuration startup
+- Plugin system with upload capability
+- Dynamic plugin management
 
-You can run your application in dev mode that enables live coding using:
+## Quick Start
 
-```shell script
+### Running from JAR
+
+```bash
+# Download the latest release
+java -jar silat-runtime-standalone-{version}-runner.jar
+
+# The server will start with configuration from application.properties
+```
+
+### Running with Maven
+
+```bash
+# Clone the repository
+git clone https://github.com/kayys/silat.git
+cd silat/silat-runtime-standalone
+
+# Run in development mode
 ./mvnw quarkus:dev
-```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
-
-## Packaging and running the application
-
-The application can be packaged using:
-
-```shell script
+# Build and run
 ./mvnw package
+java -jar target/silat-runtime-standalone-{version}-runner.jar
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+### Running with Docker
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+```bash
+# Pull and run the latest image
+docker run -p 8080:8080 -p 9090:9090 kayys/silat-standalone:latest
 
-If you want to build an _über-jar_, execute the following command:
-
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
+# Or build and run locally
+docker build -t silat-standalone .
+docker run -p 8080:8080 -p 9090:9090 silat-standalone
 ```
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+### Running with Docker Compose
 
-## Creating a native executable
+```bash
+# Start with default configuration
+docker-compose up -d
 
-You can create a native executable using:
-
-```shell script
-./mvnw package -Dnative
+# Stop the service
+docker-compose down
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+## Configuration
 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
+The standalone runtime can be configured via:
+
+1. **Environment variables**
+2. **application.properties** file
+3. **Default values**
+
+### Environment Variables
+
+- `QUARKUS_HTTP_PORT`: HTTP port (default: 8080)
+- `QUARKUS_GRPC_SERVER_PORT`: gRPC server port (default: 9090)
+- `QUARKUS_DATASOURCE_JDBC_URL`: Database connection URL
+- `SILAT_ENGINE_NAME`: Name of the workflow engine instance
+- `SILAT_ENGINE_ID`: Unique ID for the engine instance
+- `SILAT_TENANT_DEFAULT_ID`: Default tenant ID
+- `SILAT_EXECUTOR_TRANSPORT`: Executor transport type (LOCAL, GRPC, KAFKA, REST)
+
+## API Endpoints
+
+Once running, the following endpoints are available:
+
+- `GET /q/health` - Health check
+- `GET /q/metrics` - Prometheus metrics
+- `GET /q/swagger-ui` - Interactive API documentation
+- `POST /api/workflows` - Create new workflow
+- `GET /api/workflows` - List workflows
+- `POST /api/runs` - Start workflow run
+- `GET /api/runs` - List workflow runs
+
+## Plugin Management
+
+The standalone runtime includes a comprehensive plugin management system:
+
+### Plugin Upload
+- `POST /api/plugins/upload` - Upload a new plugin JAR file
+- Supports JAR files only
+- Plugins are automatically loaded after upload
+
+### Plugin Operations
+- `GET /api/plugins` - List all loaded plugins
+- `GET /api/plugins/{filename}` - Get information about a specific plugin
+- `DELETE /api/plugins/{filename}` - Remove a plugin
+- `PUT /api/plugins/{filename}/enable` - Enable a plugin
+- `PUT /api/plugins/{filename}/disable` - Disable a plugin
+- `POST /api/plugins/refresh` - Rescan and reload plugins
+
+### Plugin Configuration
+- `GET /api/plugins/{filename}/config` - Get plugin configuration
+- `POST /api/plugins/{filename}/config` - Update plugin configuration
+- `PUT /api/plugins/{filename}/config/{key}` - Set a configuration property
+- `DELETE /api/plugins/{filename}/config/{key}` - Remove a configuration property
+
+### Plugin Directory
+- Default location: `./plugins`
+- Configurable via `silat.plugins.directory` property
+- Automatically scanned for plugins on startup
+
+## Architecture
+
+The standalone runtime includes:
+
+- **Workflow Engine**: Core workflow execution engine
+- **Scheduler**: Task scheduling and retry management
+- **Dispatcher**: Task dispatching to executors
+- **Local Executors**: Built-in executors for common tasks
+- **Storage**: Embedded database for workflow state
+- **API Layer**: REST and gRPC interfaces
+
+## Security Configuration
+
+The standalone runtime supports TLS/SSL for secure communication. You can generate certificates using the provided script:
+
+```bash
+# Generate certificates for TLS/SSL
+./scripts/generate-certs.sh
 ```
 
-You can then execute your native executable with: `./target/silat-runtime-1.0.0-SNAPSHOT-runner`
+The generated certificates will be placed in the `./certs` directory and can be used to configure secure communication.
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+### TLS Configuration Properties
 
-## Provided Code
+Add these properties to your `application.properties` to enable TLS:
 
-### REST
+```properties
+# HTTPS Configuration
+quarkus.http.ssl.certificate.file=certs/server.crt
+quarkus.http.ssl.certificate.key-file=certs/server.key
+quarkus.http.ssl.port=8443
 
-Easily start your REST Web Services
+# gRPC TLS Configuration
+quarkus.grpc.server.ssl.certificate-file=certs/server.crt
+quarkus.grpc.server.ssl.key-file=certs/server.key
+quarkus.grpc.server.ssl.client-auth=CERTIFICATE
+quarkus.grpc.server.ssl.trust-store-file=certs/truststore/truststore.jks
+quarkus.grpc.server.ssl.trust-store-password=changeit
 
-[Related guide section...](https://quarkus.io/guides/getting-started-reactive#reactive-jax-rs-resources)
+# Keystore Configuration
+quarkus.tls.trust-store.file=certs/truststore/truststore.jks
+quarkus.tls.trust-store.password=changeit
+quarkus.tls.key-store.file=certs/keystore/server.jks
+quarkus.tls.key-store.password=changeit
+```
+
+## Production Considerations
+
+For production use, consider:
+
+- External database instead of embedded H2
+- External Redis for distributed caching
+- Proper TLS certificates from a trusted CA
+- Proper monitoring and alerting
+- Backup and recovery procedures
+- Resource limits and scaling
+
+## Building from Source
+
+```bash
+# Build JAR
+./mvnw package
+
+# Build native image (requires GraalVM)
+./mvnw package -Pnative
+
+# Build Docker image
+docker build -t silat-standalone .
+```
+
+## Testing
+
+The standalone runtime includes comprehensive tests for all API endpoints:
+
+### Unit Tests
+- `WorkflowDefinitionResourceTest` - Tests for workflow definition management
+- `WorkflowRunResourceTest` - Tests for workflow run operations
+- `ExecutorRegistryResourceTest` - Tests for executor registration and management
+- `PluginResourceTest` - Tests for plugin upload and management
+- `CallbackResourceTest` - Tests for workflow callbacks and health endpoints
+
+### Integration Tests
+- Integration tests (`*IT.java`) that run the full application in a realistic environment
+
+### Running Tests
+
+```bash
+# Run all unit tests
+./mvnw test
+
+# Run all integration tests
+./mvnw verify -DskipITs=false
+
+# Run specific test
+./mvnw test -Dtest=WorkflowDefinitionResourceTest
+
+# Run test suite
+./mvnw test -Dtest=SilatRuntimeTestSuite
+```
+
+### Test Coverage
+
+The test suite provides:
+- API endpoint validation
+- Request/response format verification
+- Error handling testing
+- Integration testing with all components
+- End-to-end workflow scenarios
+
+## Contributing
+
+See the main repository for contribution guidelines.
+
+## License
+
+Apache 2.0

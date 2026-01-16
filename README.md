@@ -150,3 +150,32 @@ SILAT WORKFLOW ENGINE - PROJECT STRUCTURE
   2. **Execute a workflow**: Use `silat runs create` followed by `silat runs start` to execute a workflow
   3. **Monitor workflow execution**: Use `silat runs get` to check the status of a running workflow
   4. **Manage executors**: Use the executors commands to register and manage workflow executors
+
+Testing
+=======
+Silat includes comprehensive testing for all components:
+
+### Unit Tests
+- Individual component testing using JUnit 5
+- API endpoint testing with REST Assured
+- Mock-based testing for isolated functionality
+
+### Integration Tests
+- Full application integration tests
+- End-to-end workflow execution tests
+- Multi-module interaction tests
+
+### Running Tests
+
+```bash
+# Run all tests
+./mvnw test verify
+
+# Run tests for specific module
+./mvnw test -pl <module-name>
+
+# Run integration tests only
+./mvnw verify -DskipUTs=true
+```
+
+  4. **Manage executors**: Use the executors commands to register and manage workflow executors
