@@ -28,18 +28,19 @@
     </properties>
 
     <modules>
-        <module>silat-plugin-api</module>
-        <module>silat-engine</module>
-        <module>silat-common</module>
-        <module>silat-api</module>
-        <module>silat-sdk-client</module>
-        <module>silat-sdk-executor</module>
-        <module>silat-registry</module>
-        <module>silat-grpc</module>
-        <module>silat-kafka</module>
-        <module>silat-runtime</module>
-        <module>silat-runtime-standalone</module>
-        <module>silat-plugins</module>
+        <module>core/silat-plugin-api</module>
+        <module>core/silat-engine</module>
+        <module>core/silat-common</module>
+        <module>core/silat-api</module>
+        <module>core/silat-registry</module>
+        <module>ui/silat-cli</module>
+        <module>sdk/silat-sdk-client</module>
+        <module>sdk/silat-sdk-executor</module>
+        <module>protocol/silat-grpc</module>
+        <module>protocol/silat-kafka</module>
+        <module>runtime/silat-runtime</module>
+        <module>runtime/silat-runtime-standalone</module>
+        <module>plugins</module>
         <module>examples/silat-test-client</module>
         <module>examples/silat-test-executor</module>
     </modules>

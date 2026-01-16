@@ -13,7 +13,7 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.ParentCommand;
 
 @Command(name = "config", description = "Manage CLI configuration")
-public class ConfigCommands implements Callable<Integer> {
+public class ConfigCommands {
 
     @ParentCommand
     SilatCli parent;
@@ -93,32 +93,32 @@ public class ConfigCommands implements Callable<Integer> {
         }
     }
 
-    private Properties loadOrCreateConfig() throws IOException {
+    private static Properties loadOrCreateConfig() throws IOException {
         Path configPath = getConfigPath();
         Properties props = new Properties();
-        
+
         if (Files.exists(configPath)) {
             try (var fis = Files.newInputStream(configPath)) {
                 props.load(fis);
             }
         }
-        
+
         return props;
     }
 
-    private void saveConfig(Properties props) throws IOException {
+    private static void saveConfig(Properties props) throws IOException {
         Path configPath = getConfigPath();
         Path parentDir = configPath.getParent();
         if (parentDir != null && !Files.exists(parentDir)) {
             Files.createDirectories(parentDir);
         }
-        
+
         try (var fos = Files.newOutputStream(configPath)) {
             props.store(fos, "Silat CLI Configuration");
         }
     }
 
-    private Path getConfigPath() {
+    private static Path getConfigPath() {
         String userHome = System.getProperty("user.home");
         return Paths.get(userHome, ".silat", "config.properties");
     }

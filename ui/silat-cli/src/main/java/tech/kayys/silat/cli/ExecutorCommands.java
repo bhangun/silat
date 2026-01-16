@@ -14,7 +14,7 @@ import tech.kayys.silat.grpc.v1.CommunicationType;
 import tech.kayys.silat.grpc.v1.HeartbeatRequest;
 import tech.kayys.silat.grpc.v1.RegisterExecutorRequest;
 import tech.kayys.silat.grpc.v1.UnregisterExecutorRequest;
-import tech.kayys.silat.dispatcher.CommunicationTypeConverter;
+import tech.kayys.silat.grpc.CommunicationTypeConverter;
 
 @Command(name = "executors", description = "Manage executors", subcommands = {
         ExecutorCommands.Register.class,
